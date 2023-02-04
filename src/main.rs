@@ -1,9 +1,13 @@
-use image_examples::create_simple_image::{generate_simple_image, ImageSizeInfo};
+use image_examples::create_simple_image::{generate_simple_image};
 use vulkano::{VulkanLibrary};
 use vulkano::command_buffer::allocator::StandardCommandBufferAllocator;
 use vulkano::device::{DeviceCreateInfo, QueueCreateInfo, Device};
 use vulkano::instance::{Instance, InstanceCreateInfo};
 use vulkano::memory::allocator::{StandardMemoryAllocator};
+
+use crate::image_examples::create_mandelbrot_set_image::generate_mandelbrot_set_image;
+use crate::image_examples::utils::ImageSizeInfo;
+
 
 mod image_examples;
 
@@ -42,11 +46,11 @@ fn main() {
         StandardCommandBufferAllocator::new(device.clone(), Default::default());
 
     let image_size_info = ImageSizeInfo {
-        width: 1024,
-        height: 720,
+        width: 1920,
+        height: 1080,
     };
 
-    generate_simple_image(device, &memory_allocator, &command_buffer_allocator, queue, image_size_info);
-
+    //generate_simple_image(device, &memory_allocator, &command_buffer_allocator, queue, image_size_info);
+    generate_mandelbrot_set_image(device, &memory_allocator, &command_buffer_allocator, queue, image_size_info);
     println!("Done!");
 }

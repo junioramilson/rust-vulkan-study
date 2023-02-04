@@ -3,10 +3,7 @@ use std::sync::Arc;
 use image::{ImageBuffer, Rgba};
 use vulkano::{memory::allocator::StandardMemoryAllocator, device::{Queue, Device}, command_buffer::{allocator::StandardCommandBufferAllocator, AutoCommandBufferBuilder, CommandBufferUsage, ClearColorImageInfo, CopyImageToBufferInfo}, image::{StorageImage, ImageDimensions}, format::{Format, ClearColorValue}, buffer::{CpuAccessibleBuffer, BufferUsage}, sync::{self, GpuFuture}};
 
-pub struct ImageSizeInfo {
-    pub width: u32,
-    pub height: u32,
-}
+use super::utils::ImageSizeInfo;
 
 pub fn generate_simple_image(device: Arc<Device>, memory_allocator: &StandardMemoryAllocator, command_buffer_allocator: &StandardCommandBufferAllocator, queue: Arc<Queue>, image_size_info: ImageSizeInfo) {
     println!("Creating GPU Image");
